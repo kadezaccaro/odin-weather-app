@@ -8,23 +8,21 @@
   </head>
   <body>
     <main>
-      <h1>Weather</h1>
-      <form action="">
+      <header>
+        <h1>Weather for <span class="location">New York</span>.</h1>
+      </header>
+
+      <!-- <form action="">
         <input type="text" id="location" placeholder="Enter a location" />
         <button type="submit">Check weather</button>
-      </form>
+      </form> -->
 
-      <section class="weather-data">
-        <div class="weather-card">
-          <h2>Temperature</h2>
-          <span class="data temp"></span>
-        </div>
-        <div class="weather-card">
-          <h2>Humidity</h2>
-          <span class="data humid"></span>
-        </div>
+      <section class="weather">
+        <div class="clock weather-card">11:59 AM</div>
       </section>
     </main>
+
+    <button class="temp-toggle">°F</button>
 
     <script src="app.js"></script>
   </body>
