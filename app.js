@@ -48,14 +48,13 @@ function createCurrentCard(weatherData) {
   card.innerHTML = `
     <div class="card-header">
       <img class="icon" src="${current.condition.icon}"
-      alt="Weather condition icon"
-      />
-      <h2 class="day">${formatDate(todaysForecast.date)}</h2>
+        alt="Weather condition icon" />
+      <p class="day">${formatDate(todaysForecast.date)} (Today)</p>
     </div>
     <span class="temp">${current.temp_f}<span class="deg">°F</span></span>
     <div class="forecast-info-container">
       <div class="forecast-info">
-        <p class="precip">Chance of rain</p>
+        <p class="precip">Chance of Rain</p>
         <p class="val">${todaysForecast.day.daily_chance_of_rain}%</p>
       </div>
       <div class="forecast-info">
@@ -79,17 +78,18 @@ function createForecastCards(day) {
   card.innerHTML = `
   <div class="card-header">
     <img class="icon" src="${day.day.condition.icon}"
-      alt="Weather condition icon"
-    />
-    <h2 class="day">${formatDate(day.date)}</h2>
+      alt="Weather condition icon" />
+    <p class="day">${formatDate(day.date)}</p>
   </div>
-    <p class="min-max-temp">
-      ${day.day.maxtemp_f}° /
-      ${day.day.mintemp_f}°
-    </p>
+    <div class="min-max-temp">
+      <span class="high-label">H</span>
+      <span>${day.day.maxtemp_f}°</span>
+      <span class="low-label">L</span>
+      <span>${day.day.mintemp_f}°</span>
+    </div>
     <div class="forecast-info-container">
       <div class="forecast-info">
-        <p class="precip">Chance of rain</p>
+        <p class="precip">Chance of Rain</p>
         <p class="val">${day.day.daily_chance_of_rain}%</p>
       </div>
       <div class="forecast-info">
