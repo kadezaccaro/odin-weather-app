@@ -1,24 +1,7 @@
+import { formatDate } from "./timeUtils.js";
+
 const h1 = document.querySelector("h1");
 let loc = "New York";
-const WEATHER_API_KEY = "";
-
-async function getWeather() {
-  try {
-    const response = await fetch(
-      `http://api.weatherapi.com/v1/forecast.json?key=${WEATHER_API_KEY}&q=${loc}&days=7`
-    );
-
-    const weatherData = await response.json();
-
-    console.log(weatherData);
-
-    displayWeather(weatherData);
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-getWeather();
 
 // form.addEventListener("submit", (event) => {
 //   event.preventDefault();
@@ -28,7 +11,7 @@ getWeather();
 //   getWeather();
 // });
 
-function displayWeather(weatherData) {
+export function displayWeather(weatherData) {
   // Remove today from the forecast
   const forecast = weatherData.forecast.forecastday.slice(1);
 
@@ -68,8 +51,7 @@ function createCurrentCard(weatherData) {
     </div>
   `;
 
-  const weatherSection = document.querySelector(".weather");
-  weatherSection.appendChild(card);
+  appendToWeatherSection(card);
 }
 
 function createForecastCards(day) {
@@ -103,17 +85,10 @@ function createForecastCards(day) {
     </div>
   `;
 
-  const weatherSection = document.querySelector(".weather");
-  weatherSection.appendChild(card);
+  appendToWeatherSection(card);
 }
 
-function formatDate(dateString) {
-  const date = new Date(dateString + "T00:00:00Z");
-  const options = {
-    weekday: "short",
-    month: "short",
-    day: "numeric",
-    timeZone: "UTC",
-  };
-  return date.toLocaleDateString("en-US", options);
+function appendToWeatherSection(card) {
+  const weatherSection = document.querySelector(".weather");
+  weatherSection.appendChild(card);
 }
