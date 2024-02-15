@@ -11,10 +11,8 @@ export async function getWeather() {
 
     const weatherData = await response.json();
 
-    console.log(weatherData);
-
     displayWeather(weatherData);
   } catch (error) {
-    console.log(error);
+    alert(error);
   }
 }

@@ -1,4 +1,4 @@
-import { formatDate } from "./timeUtils.js";
+import { getTimeAndStartClock, formatDate } from "./timeUtils.js";
 
 const h1 = document.querySelector("h1");
 let loc = "New York";
@@ -12,10 +12,11 @@ let loc = "New York";
 // });
 
 export function displayWeather(weatherData) {
-  // Remove today from the forecast
-  const forecast = weatherData.forecast.forecastday.slice(1);
+  const forecast = weatherData.forecast.forecastday.slice(1); // Remove today from the forecast
+  const timeZone = weatherData.location.tz_id;
 
   createCurrentCard(weatherData);
+  getTimeAndStartClock(timeZone);
 
   forecast.forEach((day) => {
     createForecastCards(day);
