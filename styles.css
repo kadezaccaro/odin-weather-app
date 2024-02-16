@@ -1,12 +1,11 @@
 /* || VARIABLES */
 
 :root {
-  --color-bg: #2c3e50;
   --color-dark: #34495e;
-  --color-mid: #3498db;
   --color-light: #ecf0f1;
   --color-glass: rgba(255, 255, 255, 0.5);
   --color-gradient: linear-gradient(90deg, #ff9966, #ff5e62);
+  --color-error: #ff5e62;
 
   --max-width: 1200px;
 }
@@ -54,6 +53,8 @@ h1 {
 form {
   display: flex;
   gap: 0px;
+  transition: 0.3s;
+  border-radius: 16px;
 }
 
 .location-input {
@@ -92,6 +93,11 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
   color: var(--color-dark);
+}
+
+.error {
+  animation: shake 0.5s;
+  background-color: var(--color-error);
 }
 
 /* || WEATHER */
@@ -200,4 +206,24 @@ button[type="submit"]:hover {
   font-weight: bold;
   color: var(--color-glass);
   cursor: pointer;
+}
+
+/* || ANIMATION */
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(20px);
+  }
+  50% {
+    transform: translateX(-20px);
+  }
+  75% {
+    transform: translateX(20px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }

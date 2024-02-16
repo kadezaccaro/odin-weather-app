@@ -14,8 +14,11 @@ export async function getWeather() {
     const weatherData = await response.json();
 
     displayWeather(weatherData);
+
+    form.classList.remove("error");
   } catch (error) {
-    alert(error);
+    console.error(error);
+    form.classList.add("error");
   }
 }
 
