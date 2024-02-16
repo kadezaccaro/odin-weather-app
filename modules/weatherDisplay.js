@@ -1,26 +1,31 @@
 import { getTimeAndStartClock, formatDate } from "./timeUtils.js";
 
-const h1 = document.querySelector("h1");
-let loc = "New York";
-
-// form.addEventListener("submit", (event) => {
-//   event.preventDefault();
-
-//   loc = locationInput.value;
-//   h1.textContent = `${loc}`;
-//   getWeather();
-// });
+// TODO: add error handling
+// TODO: implement unit toggle celcius functionality
+// TODO: improve icons
+// TODO: setup netlify for proper api key handling
 
 export function displayWeather(weatherData) {
   const forecast = weatherData.forecast.forecastday.slice(1); // Remove today from the forecast
   const timeZone = weatherData.location.tz_id;
 
+  const weatherSection = document.querySelector(".weather");
+  weatherSection.innerHTML = "";
+
+  createClock();
   createCurrentCard(weatherData);
   getTimeAndStartClock(timeZone);
 
   forecast.forEach((day) => {
     createForecastCards(day);
   });
+}
+
+function createClock() {
+  const clock = document.createElement("div");
+  clock.classList.add("clock", "weather-card");
+
+  appendToWeatherSection(clock);
 }
 
 function createCurrentCard(weatherData) {

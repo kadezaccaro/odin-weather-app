@@ -6,7 +6,7 @@
   --color-mid: #3498db;
   --color-light: #ecf0f1;
   --color-glass: rgba(255, 255, 255, 0.5);
-  --color-gradient: linear-gradient(45deg, #ff9966, #ff5e62, #ff2a6d, #e8008e);
+  --color-gradient: linear-gradient(90deg, #ff9966, #ff5e62);
 
   --max-width: 1200px;
 }
@@ -28,8 +28,7 @@ body {
   place-content: center;
   color: var(--color-dark);
   background: var(--color-gradient);
-  background-size: 400% 400%;
-  animation: lavaLamp 10s infinite;
+  background-size: 200%;
 }
 
 p {
@@ -41,54 +40,58 @@ p {
 header {
   margin-bottom: 80px;
   max-width: var(--max-width);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 h1 {
   font-size: 80px;
+  line-height: 80px;
   color: var(--color-glass);
-}
-
-.location {
-  position: relative;
-  color: var(--color-dark);
-}
-
-/* underline location */
-.location::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 12px;
-  background-color: var(--color-dark);
 }
 
 form {
   display: flex;
-  gap: 8px;
-  max-width: 400px;
-  padding: 80px 0;
+  gap: 0px;
 }
 
-input {
-  padding: 8px 16px;
-  border-radius: 4px;
+.location-input {
+  font-size: 136px;
+  font-weight: bold;
+  color: var(--color-dark);
   border: none;
-  font-size: 16px;
-  width: 100%;
+  padding: 8px 16px;
+  border: 8px solid var(--color-glass);
+  border-right: none;
+  border-radius: 16px 0 0 16px;
+  background: none;
+  width: 80%;
+  letter-spacing: -4px;
+  padding-right: 0;
 }
 
-button {
+.location-input:focus {
+  outline: none;
+}
+
+button[type="submit"] {
+  width: 20%;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 80px;
   padding: 8px 16px;
-  border-radius: 4px;
-  border: none;
-  background-color: var(--color-mid);
-  color: var(--color-light);
+  border: 8px solid var(--color-glass);
+  border-left: none;
+  border-radius: 0 16px 16px 0;
+  background: none;
+  color: var(--color-glass);
   transition: 0.3s;
   text-wrap: nowrap;
+  transition: 0.3s;
+}
+
+button[type="submit"]:hover {
+  color: var(--color-dark);
 }
 
 /* || WEATHER */
@@ -124,14 +127,11 @@ button {
 .card-header {
   display: flex;
   justify-content: space-between;
+  align-items: start;
 }
 
 .current-card {
   grid-row: 1 / 3;
-}
-
-h2 {
-  font-weight: normal;
 }
 
 .icon {
@@ -199,18 +199,5 @@ h2 {
   bottom: 64px;
   font-weight: bold;
   color: var(--color-glass);
-}
-
-/* || ANIMATIONS */
-
-@keyframes lavaLamp {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  cursor: pointer;
 }

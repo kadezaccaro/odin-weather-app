@@ -5,20 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
     <link rel="stylesheet" href="styles.css" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
   </head>
   <body>
     <main>
       <header>
-        <h1>Weather for <span class="location">New York</span>.</h1>
+        <h1>Weather for</h1>
+
+        <form class="location-form" action="">
+          <input
+            class="location-input"
+            type="text"
+            value="Brooklyn, NY"
+            required
+          />
+          <button type="submit">
+            <i class="fas fa-arrow-right"></i>
+          </button>
+        </form>
       </header>
 
-      <!-- <form action="">
-        <input type="text" id="location" placeholder="Enter a location" />
-        <button type="submit">Check weather</button>
-      </form> -->
-
       <section class="weather">
-        <div class="clock weather-card">11:59 AM</div>
+        <!-- Create dynamically with JS -->
       </section>
     </main>
 
