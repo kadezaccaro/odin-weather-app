@@ -1,20 +1,16 @@
 import { getTimeAndStartClock, formatDate } from "./timeUtils.js";
 
-// TODO: add error handling
-// TODO: implement unit toggle celcius functionality
-// TODO: improve icons
-// TODO: setup netlify for proper api key handling
-
-export function displayWeather(weatherData) {
-  const forecast = weatherData.forecast.forecastday.slice(1); // Remove today from the forecast
-  const timeZone = weatherData.location.tz_id;
+export function displayWeather(preparedData) {
+  const forecast = preparedData.forecast.forecastday.slice(1);
+  const timeZone = preparedData.current.timeZone;
 
   const weatherSection = document.querySelector(".weather");
   weatherSection.innerHTML = "";
 
   createClock();
-  createCurrentCard(weatherData);
   getTimeAndStartClock(timeZone);
+
+  createCurrentCard(preparedData);
 
   forecast.forEach((day) => {
     createForecastCards(day);
@@ -28,23 +24,27 @@ function createClock() {
   appendToWeatherSection(clock);
 }
 
-function createCurrentCard(weatherData) {
-  const current = weatherData.current;
-  const todaysForecast = weatherData.forecast.forecastday[0];
+function createCurrentCard(preparedData) {
+  const current = preparedData.current;
+  const forecast = preparedData.forecast;
+  const todaysForecast = forecast.forecastday[0];
 
   const card = document.createElement("div");
   card.classList.add("weather-card", "current-card");
   card.innerHTML = `
     <div class="card-header">
-      <img class="icon" src="${current.condition.icon}"
+      <img class="icon" src="${current.iconURL}"
         alt="Weather condition icon" />
       <p class="day">${formatDate(todaysForecast.date)} (Today)</p>
     </div>
-    <span class="temp">${current.temp_f}<span class="deg">°F</span></span>
+    <span class="temp">
+      ${current.temp}<span class="temp-unit">°${current.tempUnit}
+      </span>
+    </span>
     <div class="forecast-info-container">
       <div class="forecast-info">
         <p class="precip">Chance of Rain</p>
-        <p class="val">${todaysForecast.day.daily_chance_of_rain}%</p>
+        <p class="val">${todaysForecast.chanceOfRain}%</p>
       </div>
       <div class="forecast-info">
         <p class="humid">Humidity</p>
@@ -52,7 +52,7 @@ function createCurrentCard(weatherData) {
       </div>
       <div class="forecast-info">
         <p class="wind">Wind</p>
-        <p class="val">${current.wind_mph} mph</p>
+        <p class="val">${current.windMph} mph</p>
       </div>
     </div>
   `;
@@ -65,28 +65,28 @@ function createForecastCards(day) {
   card.classList.add("weather-card", "future-card");
   card.innerHTML = `
   <div class="card-header">
-    <img class="icon" src="${day.day.condition.icon}"
+    <img class="icon" src="${day.iconURL}"
       alt="Weather condition icon" />
     <p class="day">${formatDate(day.date)}</p>
   </div>
     <div class="min-max-temp">
       <span class="high-label">H</span>
-      <span>${day.day.maxtemp_f}°</span>
+      <span>${day.maxTemp}°</span>
       <span class="low-label">L</span>
-      <span>${day.day.mintemp_f}°</span>
+      <span>${day.minTemp}°</span>
     </div>
     <div class="forecast-info-container">
       <div class="forecast-info">
         <p class="precip">Chance of Rain</p>
-        <p class="val">${day.day.daily_chance_of_rain}%</p>
+        <p class="val">${day.chanceOfRain}%</p>
       </div>
       <div class="forecast-info">
         <p class="humid">Humidity</p>
-        <p class="val">${day.day.avghumidity}%</p>
+        <p class="val">${day.avgHumidity}%</p>
       </div>
       <div class="forecast-info">
         <p class="wind">Wind</p>
-        <p class="val">${day.day.maxwind_mph} mph</p>
+        <p class="val">${day.maxWindMph} mph</p>
       </div>
     </div>
   `;

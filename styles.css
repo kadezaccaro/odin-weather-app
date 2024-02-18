@@ -37,7 +37,7 @@ p {
 /* || HEADER & LOCATION SEARCH */
 
 header {
-  margin-bottom: 80px;
+  margin-bottom: 32px;
   max-width: var(--max-width);
   display: flex;
   flex-direction: column;
@@ -62,12 +62,12 @@ form {
   font-weight: bold;
   color: var(--color-dark);
   border: none;
-  padding: 8px 16px;
-  border: 8px solid var(--color-glass);
+  padding: 8px 24px;
+  border: 6px solid var(--color-glass);
   border-right: none;
   border-radius: 16px 0 0 16px;
   background: none;
-  width: 80%;
+  width: 100%;
   letter-spacing: -4px;
   padding-right: 0;
 }
@@ -77,17 +77,13 @@ form {
 }
 
 button[type="submit"] {
-  width: 20%;
+  padding: 8px 48px;
   cursor: pointer;
   font-size: 80px;
-  padding: 8px 16px;
-  border: 8px solid var(--color-glass);
-  border-left: none;
+  border: 6px solid var(--color-glass);
   border-radius: 0 16px 16px 0;
   background: none;
   color: var(--color-glass);
-  transition: 0.3s;
-  text-wrap: nowrap;
   transition: 0.3s;
 }
 
@@ -152,9 +148,10 @@ button[type="submit"]:hover {
   font-weight: bold;
 }
 
-.deg {
+.temp-unit {
   font-size: 50%;
   vertical-align: super;
+  text-transform: uppercase;
 }
 
 .forecast-info-container {
@@ -179,26 +176,25 @@ button[type="submit"]:hover {
   font-size: 32px;
   font-weight: bold;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   gap: 16px;
 }
 
 .high-label,
 .low-label {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: normal;
   background-color: var(--color-glass);
-  padding: 2px 4px;
+  padding: 4px 6px;
   border-radius: 4px;
 }
 
-.temp-toggle {
-  margin-top: 80px;
-  padding: 0;
+.toggle-btn {
   background: none;
   border: 2px solid var(--color-glass);
-  padding: 8px 12px;
   border-radius: 8px;
+  padding: 8px 12px;
   font-size: 24px;
   position: absolute;
   right: 64px;
