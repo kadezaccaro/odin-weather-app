@@ -172,13 +172,18 @@ button[type="submit"]:hover {
   font-weight: bold;
 } */
 
-.min-max-temp {
+.min-max-temp,
+.min-max-today {
   font-size: 32px;
   font-weight: bold;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 16px;
+}
+
+.min-max-today {
+  justify-content: start;
 }
 
 .high-label,

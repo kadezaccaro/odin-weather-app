@@ -41,6 +41,12 @@ function createCurrentCard(preparedData) {
       ${current.temp}<span class="temp-unit">°${current.tempUnit}
       </span>
     </span>
+    <div class="min-max-today">
+      <span class="high-label">H</span>
+      <span>${todaysForecast.maxTemp}°</span>
+      <span class="low-label">L</span>
+      <span>${todaysForecast.minTemp}°</span>
+    </div>
     <div class="forecast-info-container">
       <div class="forecast-info">
         <p class="precip">Chance of Rain</p>
