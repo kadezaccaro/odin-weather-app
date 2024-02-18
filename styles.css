@@ -96,6 +96,25 @@ button[type="submit"]:hover {
   background-color: var(--color-error);
 }
 
+.error-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--color-dark);
+  background-color: var(--color-error);
+  padding: 16px 24px;
+  border-radius: 8px;
+}
+
+.error-message i {
+  font-size: 20px;
+}
+
+.hide-error {
+  display: none;
+}
+
 /* || WEATHER */
 
 .weather {
