@@ -1,10 +1,11 @@
 /* || VARIABLES */
 
 :root {
+  --color-bg: #ff9966;
   --color-dark: #34495e;
   --color-light: #ecf0f1;
   --color-glass: rgba(255, 255, 255, 0.5);
-  --color-gradient: linear-gradient(45deg, #ff9966, #ff5e62);
+  --color-gradient: linear-gradient(90deg, #ff9966, #ff5e62);
   --color-error: #ff5e62;
 
   --max-width: 75rem;
@@ -26,8 +27,9 @@ body {
   display: grid;
   place-content: center;
   color: var(--color-dark);
+  background-color: var(--color-bg);
   background: var(--color-gradient);
-  background-size: 150%;
+  background-size: cover;
   padding: 4rem;
 }
 
@@ -42,7 +44,7 @@ header {
   max-width: var(--max-width);
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0.5rem;
 }
 
 h1 {
@@ -189,7 +191,7 @@ button[type="submit"]:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 0.0625rem dotted var(--color-dark);
+  border-bottom: 1px dotted var(--color-dark);
 }
 
 /* .val {
@@ -255,7 +257,7 @@ button[type="submit"]:hover {
   background: var(--color-gradient);
   border: 0.25rem solid var(--color-dark);
   border-radius: 0.5rem;
-  padding: 0.5rem 0.75rem;
+  padding: 0.75rem 1rem;
   font-size: 1.5rem;
   position: fixed;
   right: 2rem;
@@ -299,13 +301,17 @@ button[type="submit"]:hover {
 @media (max-width: 1200px) {
   html {
     font-size: 13px;
-    height: 100%;
   }
 }
 
 @media (max-width: 944px) {
-  html {
-    font-size: 11px;
+  html,
+  body {
+    display: block;
+  }
+
+  body {
+    height: unset;
   }
 
   .weather {
@@ -367,8 +373,8 @@ button[type="submit"]:hover {
   }
 }
 
-@media (max-height: 900px) {
-  body {
-    height: unset;
+@media (max-height: 1024px) {
+  html {
+    font-size: 1.49vh;
   }
 }
